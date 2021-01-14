@@ -8,7 +8,7 @@ async function getLatestVersion() {
   const response = await fetch(process.env.PAGE_URL);
   const text = await response.text();
   const dom = await new JSDOM(text);
-  const element = dom.window.document.querySelector(".div-table-body-BIOS > .download-version");
+  const element = dom.window.document.querySelector(process.env.QUERY_SELECTOR);
 
   return element.textContent.replace(/\s/g, "");
 }
